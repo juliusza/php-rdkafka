@@ -201,12 +201,8 @@ PHP_METHOD(RdKafka__TopicPartition, __construct)
     arglen_t topic_len;
     long partition;
     long offset = 0;
-    zend_error_handling error_handling;
-
-    zend_replace_error_handling(EH_THROW, spl_ce_InvalidArgumentException, &error_handling TSRMLS_CC);
 
     if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "sl|l", &topic, &topic_len, &partition, &offset) == FAILURE) {
-        zend_restore_error_handling(&error_handling TSRMLS_CC);
         return;
     }
 
